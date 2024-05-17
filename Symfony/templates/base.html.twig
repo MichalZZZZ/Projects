@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/7e1e23a0fd.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="sweetalert2.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.payform.min.js') }}"></script>
+        <script src="https://kit.fontawesome.com/7e1e23a0fd.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.all.min.js"></script>
+        <script src="sweetalert2.all.min.js"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    {% endblock %}
+</head>
+<header>
+    <div class="header-img">
+        <div class="header-text">
+            <h1>Cars - najlepszy portal handlowy</h1>
+            <p>Z nami kupisz lub sprzedasz każdy samochód!</p>
+        </div>
+        <div class="header-bg"></div>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg bg-dark sticky-top w-100 top-0">
+    <div class="container">
+        <a class="nav-link" href="{{ path('app_add_new_car') }}"><i class="fa-solid fa-car-side"><i class="fa-solid fa-car-side fa-plus"></i></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="{{ path('index') }}">Strona główna</a>
+                <a class="nav-link" href="{{ path('app_all_cars') }}">Wszystkie</a>
+                {% if app.user %}
+                    <a class="nav-link" href="{{ path('app_my_cars') }}">Moje samochody</a>
+                    <a class="nav-link" href="{{ path('app_my_profile', {'page': 1}) }}">Mój profil</a>
+                    <a class="nav-link" href="{{ path('app_mail') }}">kontakt</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj się</a>
+{#                    <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass me-1"></i>szukaj</a>#}
+{#                    {% if latestPhoto %}#}
+{#                        <img src="{{ asset('img/hosting/' ~ latestPhoto) }}" alt="Moje zdjęcie">#}
+{#                    {% endif %}#}
+                {%else %}
+                    <a class="nav-link" href="{{ path('app_login') }}">Zaloguj się</a>
+                    <a class="nav-link" href="{{ path('app_register') }}">Zarejestruj się</a>
+                {% endif %}
+            </div>
+        </div>
+        {% if app.user %}
+            <div class="cart">
+                <a class="nav-link me-2" href="{{ path('app_cart_show') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
+<body>
+
+
+{% block content %}{% endblock %}
+
+{#<footer class="bg-dark text-light py-4 text-center sticky-top w-100 bottom-0">#}
+{#    <p class="mb-0">$copy; 2023 | Cars</p>#}
+{#</footer>#}
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Strona główna{% endblock %}
+
+{% block content %}
+
+<section class="index">
+    <aside class="index-aside">
+        <div class="right">
+
+        </div>
+        <div class="card-group mb-3 text-center">
+            <h5 class="mt-3">Ostatnio dołączyli:</h5>
+            {% for user in allUser %}
+                <div class="col col-sm-12 col-lg-12 mb-12 klasa">
+                    <div class="card card-2">
+                        <p><a href="{{ path('app_show_seller', {'id': user.id, 'page': 1}) }}">{{ user.username }}</a></p>
+                        <div class="card-footer">
+                            <p>Dołączono:<br> {{ user.creationdate|date('d.m.Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </aside>
+
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert mt-3 alert-success">
+                {{ message }}
+            </div>
+        {%endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert mt-3 alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="card mt-5 w-75">
+            <div class="card-body">
+                Przeglądaj róznorodne samochody dowolnie. Znajdziesz tu dane techniczne, ceny oraz recenzje.
+            </div>
+        </div>
+
+        <div class="row w-75">
+            <div class="col-sm-6 col-md-6 d-flex align-items-center justify-content-center">
+                <div class="d-flex mt-5">
+                    <div class="d-flex flex-column mb-4">
+                        <div class="text-center mb-4"><h3>Pochwal się swoim samochodem!</h3>
+                            <h5>Nie czekaj!</h5>
+                            <a href="{{ path('app_add_new_car') }}" class="btn btn-primary mt-4 btn-lg" id="editButton-2">Dodaj samochód</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 mt-4">
+                <img src="{{ asset('assets/images/huracan.jpg') }}" class="img-fluid mt-5 start"/>
+            </div>
+        </div>
+        <div class="row w-75">
+            <div class="col-sm-6 col-md-6 mt-4 start-img">
+                <img src="https://cdn.pixabay.com/photo/2020/02/03/10/02/sports-car-4815234_960_720.jpg" class="img-fluid mt-5 start">
+            </div>
+            <div class="col-sm-6 col-md-6 d-flex align-items-center justify-content-center">
+                <div class="d-flex mt-5">
+                    <div class="d-flex flex-column mb-4">
+                        <div class="text-center mb-4"><h3>Zobacz co dodają inni!</h3>
+                            <h5>Mnóstwo ogłoszeń!</h5>
+                            <a href="{{ path('app_all_cars') }}" class="btn btn-primary mt-4 btn-lg" id="editButton-2">Ogłoszenia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if not app.user %}
+        <div class="center-now d-flex align-items-center justify-content-center">
+        <div class="card mt-5 w-50 text-center">
+            <div class="card-body">
+
+                    <h5 class="card-title">Załóż darmowe konto już teraz</h5>
+                    <p class="card-text">Dodawaj recenzje i opisy pojazdów dowoli!</p>
+                    <p class="text-center"><a href="{{ path('app_register') }}" class="btn btn-primary text-center">Załóż konto</a></p>
+
+            </div>
+        </div>
+        </div>
+        {% endif %}
+
+        <div class="row mt-5 mb-5 w-75" style="padding-top: 80px; padding-bottom: 80px;">
+
+            <div class="col-sm-4 anim">
+                <div class="a d-flex flex-column align-items-center">
+                    <div class="animme"><img src="{{ asset('assets/images/1.png') }}" class="img-fluid image"/></div>
+                    <div style="font-size: 24px;">Dodaj swój samochód</div>
+                    <p class="mt-3 text-center">Wgrywaj swoje auta bez limitu. Używaj zgodnych formatów plików
+                        zdjęciowych</p>
+                </div>
+            </div>
+            <div class="col-sm-4 anim">
+                <div class="a d-flex flex-column align-items-center">
+                    <div class="animme"><img src="{{ asset('assets/images/2.png') }}" class="img-fluid image"/></div>
+                    <div class="text-center" style="font-size: 24px;">Darmowe konto użytkownika</div>
+                    <p class="mt-3 text-center">Załóż darmowe konto i korzystaj z niego bez limitu. Twoje auta, twoje
+                        dane.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 anim">
+                <div class="a d-flex flex-column align-items-center">
+                    <div class="animme"><img src="{{ asset('assets/images/3.png') }}" class="img-fluid image"/></div>
+                    <div style="font-size: 24px;">Wpływ na rozwój serwisu</div>
+                    <p class="mt-3 text-center">Miej duży wpływ na rozwój serwisu przy dodawaniu recenzji. Wszystko co
+                        wgrywasz publicznie ma znaczenie.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section id="contact" class="contact py-5">
+        <h2 class="section-title">kontakt</h2>
+        <div class="underline"></div>
+        <div class="container">
+            <div class="row text-center contact-us">
+                <div class="col-sm-6 col-lg-4 contact-item order-1">
+                    <h3>główna siedziba</h3>
+                    <p>ul. Jakaś 12</p>
+                    <p>00-000 Olsztyn</p>
+                    <p>+48 444 555 666</p>
+                    <p>mail@mail.pl</p>
+                </div>
+                <div class="col-lg-4 order-0 order-lg-1 media">
+                    <h3>social media</h3>
+                    <small class="text-body-secondary"><a href="https://www.facebook.com/" target="_blank"><i
+                                    class="fa-brands fa-facebook"></i></a> <a href="https://twitter.com/?lang=pl"
+                                                                              target="_blank"><i class="fa-brands fa-twitter"></i></a> <a
+                                href="https://pl.linkedin.com/" target="_blank"><i
+                                    class="fa-brands fa-linkedin-in"></i></a></small>
+                </div>
+                <div class="col-sm-6 col-lg-4 contact-item order-1">
+                    <h3>siedziba w Dubaju</h3>
+                    <p>ul. Araby 22</p>
+                    <p>00-000 Dubai</p>
+                    <p>+00 000 555 666</p>
+                    <p>mail@mail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-shadow-4"></div>
+    </section>
+
+{% endblock %}

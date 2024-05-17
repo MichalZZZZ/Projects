@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja samochodu{% endblock %}
+
+{% block content %}
+    <div class="container edit-car w-25 text-center">
+        {% for flashMessage in app.flashes('success') %}
+            <div class="alert alert-success">{{ flashMessage }}</div>
+        {% endfor %}
+        {% for flashMessage in app.flashes('error') %}
+            <div class="alert alert-danger">{{ flashMessage }}</div>
+        {% endfor %}
+        <h3 class="mt-3">Edycja</h3>
+        <div class="img-current mt-3">
+            <p>Aktualne zdjęcie</p>
+            <img src="{{ photo }}" class="card-img-top rounded">
+        </div>
+        {{ form_start(editCars, {'attr': {'class': 'd-flex flex-column mb-4 p-3'}}) }}
+        <div class="form-group mt-2">
+            {{ form_label(editCars.photopath, 'Adres URL zdjęcia') }}
+            {{ form_widget(editCars.photopath, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            {{ form_label(editCars.price, 'Cena') }}
+            {{ form_widget(editCars.price, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            {{ form_label(editCars.description, 'Opis') }}
+            {{ form_widget(editCars.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {#                <a href="{{ path('app_edit_car', {'id': editCars.getId()}) }}" class="btn btn-primary mt-3">Zatwierdź</a>#}
+        <button type="submit" class="btn btn-primary mt-3 p-2">Zapisz zmiany</button>
+        <a href="{{ path('app_my_cars') }}" class="btn btn-danger mt-5">Anuluj</a>
+        {{ form_end(editCars) }}
+    </div>
+{% endblock %}

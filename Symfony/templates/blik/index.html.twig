@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlikController!{% endblock %}
+
+{% block content %}
+
+    <section class="blik">
+        <div class="container">
+            <h3 class="mt-3">Potwierdź zakup</h3>
+            <div class="all-blik">
+                <h3>Razem do zapłaty: {{ totalValue }} zł</h3>
+                <div class="blik-img">
+                    <img src="{{ asset('assets/image/blik2.png') }}">
+                </div>
+                <div class="content">
+                    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(form, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.codeBlik) }}
+                    <p><button class="btn btn-primary mt-3" id="blik-payment" type="submit">Zatwierdź</button></p>
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{#    <script>#}
+{#        function handleCartResponse(response) {#}
+{#            if (response.success) {#}
+{#                Swal.fire({#}
+{#                    icon: 'success',#}
+{#                    title: 'Udało się!',#}
+{#                    text: response.message,#}
+{#                }).then(() => {#}
+{#                    window.location.href = "{{ path('app_cart_save') }}";#}
+{#                });#}
+{#            } else {#}
+{#                Swal.fire({#}
+{#                    icon: 'error',#}
+{#                    title: 'Błąd!',#}
+{#                    text: response.message,#}
+{#                });#}
+{#            }#}
+{#        }#}
+
+{#        const buttonPaymentBlik = document.querySelector('#blik-payment');#}
+{#        buttonPaymentBlik.addEventListener('click', event => {#}
+{#            event.preventDefault();#}
+{#            const url = buttonPaymentBlik.href;#}
+
+{#            fetch(url, { method: 'GET' })#}
+{#                .then(response => response.json())#}
+{#                .then(data => handleCartResponse(data))#}
+{#                .catch(error => {#}
+{#                    console.error(error);#}
+{#                    Swal.fire({#}
+{#                        icon: 'error',#}
+{#                        title: 'Błąd!',#}
+{#                        text: 'Wystąpił nieznany błąd.',#}
+{#                    });#}
+{#                });#}
+{#        });#}
+{#    </script>#}
+
+
+{% endblock %}

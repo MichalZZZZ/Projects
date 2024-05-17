@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Mój profil{% endblock %}
+
+{% block content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert mt-3 alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert mt-3 alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                {% if flag %}
+                    <h5>Sprzedający: {{ user.username }}</h5>
+                {% else %}
+                    <h5>Sprzedający: TY</h5>
+                {% endif %}
+            </div>
+            <div class="mt-3">
+                <p>Imię: {{ user.name }}</p>
+                <p>Nazwisko: {{ user.lastname }}</p>
+                <p>Nr. telefonu: {{ user.phone }}</p>
+                <p>Email: {{ user.email }}</p>
+                <div class="mini-footer">
+                    <small class="text-muted">Data dołączenia: {{ user.creationDate|date('d.m.Y') }}</small>
+                    {% if flag %}
+                        <p class="mt-3"><a href="{{ path('app_all_items_seller', {'id': user.getId}) }}"><small>wszystkie przedmioty sprzedającego</small></a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if flag %}
+        <h6 class="text-center mt-3">Podziel się swoją opinią na temat tego sprzedającego</h6>
+        {% if comments|length <= 0 %}
+            <p class="text-center mt-3">Brak opinii na temat: <b>{{ user.username }}</b></p>
+        {% endif %}
+        <div class="container send-opinion">
+            <p>Jak oceniasz tego sprzedawcę?</p>
+            <div class="post">
+                <div class="text">Thanks for rating us!</div>
+                <div class="edit">EDIT</div>
+            </div>
+            <div class="star-widget">
+                {{ form_start(form, {'attr': {'class': 'form-class'}}) }}
+                {{ form_widget(form.scale) }}
+                <div class="textarea">
+                    {{ form_widget(form.description) }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Prześlij</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+
+    <section>
+        <div class="container">
+            <div class="procent">
+                {% if comments|length > 0 %}
+                    <p class="x">Liczba opinii: <span>{{ comments|length }}</span></p>
+                    <div class="mean">
+                        <p class="x">Średnia ocena sprzedającego: <h2 class="text-center mt">{{ mean }}</h2></p>
+                    </div>
+                    <p class="text-muted"> <span>{{ percent }} % </span> kupujących poleca tego sprzedającego</p>
+                {% endif %}
+            </div>
+
+            <div class="info-opinion">
+            {% if comments|length > 0 %}
+                <h5>Najnowsze opinie</h5>
+                <div class="info-comments" id="opinions-section">
+                    {% for comment in comments %}
+                        <div class="opinion-an-your-info">
+                            <div class="opinion-div">
+                                <p class="opinion-par">Opinia: {{ comment.scale }}<small class="text-muted">dodał: {{ comment.loginadduser }}</small></p>
+                                <div class="opinion-description">
+                                    <p class="opinion-par">{{ comment.description }}</p><small>{{ comment.creationdate |date('d.m.Y H:i') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="hero-image-comments"></div>
+
+                    <div class="pagination">
+                        {% if page > 1 %}
+                            <div class="next"><a href="{{ path('app_show_seller', {'id': user.id, 'page': 1}) }}#opinions-section" class="fa-solid fa-angles-left"></a></div>
+                            <div class="previous"><a href="{{ path('app_show_seller', {'id': user.id, 'page': page - 1}) }}#opinions-section" class="fa-solid fa-angle-left"></a></div>
+                        {% endif %}
+
+                        <div class="number-page"><p>Strona {{ page }} z {{ totalPages }}</p></div>
+
+                        {% if page < totalPages %}
+                            <div class="next-2"><a href="{{ path('app_show_seller', {'id': user.id, 'page': page + 1}) }}#opinions-section" class="fa-solid fa-angle-right"></a></div>
+                            <div class="last"><a href="{{ path('app_show_seller', {'id': user.id, 'page': totalPages}) }}#opinions-section" class="fa-solid fa-angles-right"></a></div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if flag %}
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endif %}
+        </div>
+    </section>
+
+{% endblock %}
+
+
+
+
+

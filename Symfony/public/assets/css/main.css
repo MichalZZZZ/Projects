@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightyellow;
+    overflow: hidden;
+}
+
+/*.figure{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin: 30px;*/
+/*}*/
+
+/*.figure p {*/
+/*}*/
+
+/*.square{*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+/*.circle{*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    border-radius: 50%;*/
+/*    background-color: tomato;*/
+/*}*/
+

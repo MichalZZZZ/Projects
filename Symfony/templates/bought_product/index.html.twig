@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BoughtProductController!{% endblock %}
+
+{% block content %}
+
+    <section class="bought-product">
+        <div class="container">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert mt-3 alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert mt-3 alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <div class="bought-product-all">
+                <h3 class="mt-4 mb-3">Kupione przez ciebie</h3>
+                {% for entry in boughtProduct %}
+                    <div class="bought-product-one">
+                        <div class="bought-date">
+                            <p>Data: {{ entry.date }}</p>
+                            <p>Wartość: {{ entry.totalValue }} zł</p>
+                            <button class="btn btn-dark fa-regular fa-eye toggle-button"></button>
+                        </div>
+                        <div class="bought-text">
+                            {% for transaction in entry.transactions %}
+                                <div class="bought-mini">
+                                    <div class="information">
+                                        <div class="column-one>"><p class="bold">Produkt:</p><p>{{ transaction.product }} </p></div>
+                                        <div class="column-one>"> <p class="bold">Ilość(szt):</p><p>{{ transaction.quantity }}</p></div>
+                                        <div class="column-one>"><p class="bold">Cena(zł):</p><p>{{ transaction.price }}</p></div>
+                                        <div class="column-one>"><p class="bold">Sprzedający:</p><p>{{ transaction.seller }}</p></div>
+                                    </div>
+                                    <div class="bought-image">
+                                        <a href="{{ path('app_show_car', {'id': transaction.id}) }}"><img src="{{ transaction.imageURL }}" class="bought-image"></a>
+                                    </div>
+{#                                    <a href="{{ path('app_bought_product_delete', {'id': transaction.id}) }}">USUN</a>#}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const buttons = document.querySelectorAll('.toggle-button');
+        const icons = document.querySelectorAll('.fa-eye');
+
+        function toggleHiddenClass(event) {
+            const button = event.target;
+            const boughtText = button.parentElement.nextElementSibling;
+            const icon = event.target;
+
+            boughtText.classList.toggle('show');
+
+            const isSelected = icon.classList.contains('fa-eye');
+            if (isSelected)
+            {
+                icon.classList.remove('fa-eye')
+                icon.classList.add('fa-eye-slash');
+            }
+            else
+            {
+                icon.classList.remove('fa-eye-slash')
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', toggleHiddenClass);
+        });
+    </script>
+
+
+{% endblock %}

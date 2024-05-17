@@ -1,0 +1,1403 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-padding-top: 74px;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+            90deg,
+            rgba(50, 60, 70, 1) 0%,
+            rgba(200, 200, 200, 0.3981967787114846) 44%,
+            rgba(128, 133, 129, 1) 100%
+    );
+}
+
+.myprofile{
+    background: linear-gradient(
+            180deg,
+            rgb(213, 196, 196) 0%,
+            rgba(117, 175, 246, 0.4) 44%,
+            rgb(171, 163, 163) 100%
+    );
+}
+
+.header-img {
+    position: relative;
+    height: 100px;
+    background-image: url('https://cdn.pixabay.com/photo/2014/09/07/22/34/car-race-438467_1280.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: aliceblue;
+    z-index: 1;
+}
+
+.header-text h1 {
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.border{
+    border: 2px solid black;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:30px;
+}
+
+.fa-solid, .fa-regular{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-size: 24px;
+    transition: 0.3s transform;
+}
+
+.fa-solid:hover, .fa-regular:hover{
+    transform: scale(1.15);
+}
+
+/*.anim{*/
+/*    transition: 0.5s transform;*/
+/*}*/
+
+.anim:hover{
+    transform: rotateX(360deg);
+}
+
+.title-position{
+    border-bottom: 1px solid white;
+}
+
+.navbar .container .collapse .navbar-nav img{
+    width: 7%;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.more-car{
+    padding: 30px;
+}
+
+.imageGallery1{
+    width: 50%;
+}
+
+.imageGallery1 img{
+    transition: 0.3s transform;
+}
+
+.imageGallery1 img:hover{
+    transform: scale(1.05);
+}
+
+.more{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+p{
+    word-break: break-all;
+}
+
+.seller{
+    display: flex;
+    width: 100px;
+    margin: 0 auto;
+    margin-right: 30px;
+    color: white;
+    z-index: 12;
+}
+
+.success-add{
+    z-index: 10;
+    width: 100%;
+}
+
+.success-add .fa-cart-plus{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+    font-size: 30px;
+}
+
+.profile{
+    width: 100%;
+    margin: 20px;
+}
+
+.profile img{
+    align-self: center;
+    justify-items: center;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px 0;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px black;
+}
+
+.profile .data-person, .profile .avatar{
+    margin: 0 30px;
+}
+
+.avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.add-avatar{
+    width: 25%;
+}
+
+.data-person{
+    width: 35%;
+}
+
+.profile h5{
+    align-self: center;
+    justify-items: center;
+}
+
+.profile .card{
+    margin: 20px;
+}
+
+.profile .bought, .sold{
+    position: relative;
+    font-size: 25px;
+    top: 60px;
+    padding: 10px;
+}
+
+.success .fa-cart-plus{
+    color: #1c7430;
+    font-size: 30px;
+}
+
+.image-2{
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px black;
+}
+
+.important-info, .engine, .data-technic, .description{
+    border: 1px solid black;
+    border-radius: 50px;
+    box-shadow: 2px 2px 15px black;
+    margin: 20px;
+    padding: 10px;
+    width: 25%;
+}
+
+.engine, .data-technic, .description, .important-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.important-info{
+    background-image: url("https://cdn.pixabay.com/photo/2017/11/04/17/13/ferrari-360-2918130_960_720.jpg");
+}
+.engine{
+    background-image: url("https://cdn.pixabay.com/photo/2017/03/19/18/51/tuning-2157354_960_720.jpg");
+}
+.data-technic{
+    background-image: url("https://cdn.pixabay.com/photo/2016/03/11/02/08/speedometer-1249610_960_720.jpg");
+}
+.description{
+    background-image: url("https://cdn.pixabay.com/photo/2018/07/01/20/01/dashboard-3510327_960_720.jpg");
+}
+
+.shadow-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 29, 29, 0.7);
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.text{
+    text-align: center;
+    z-index: 2;
+    color: white;
+}
+
+.edit, .register, .update-password, .delete-account{
+    border: 2px solid black;
+    margin: 10px auto;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px black;
+}
+
+.login{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.alert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px black;
+}
+
+.promo
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+
+.image{
+    display: block;
+    width: 130px;
+    height: auto;
+    border-radius: 50%;
+    transition: 0.5s transform;
+}
+
+.image:hover{
+    transform: rotateY(180deg);
+}
+
+.start{
+    border-radius: 20px;
+    box-shadow: 0 0 20px gray;
+    transition: 0.3s;
+}
+
+.start:hover{
+    transform: scale(1.1);
+    border: 2px solid red;
+    box-shadow: 10px 10px 20px red;
+}
+
+.card {
+    height: 100%;
+    box-shadow: 2px 2px 5px black;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.container .card-group .col .card{
+    height: 100%;
+    box-shadow: 2px 2px 5px black;
+    margin: 15px;
+}
+
+.container .card-group .col .card .card-img-top{
+    height: 40%;
+}
+.card-cart{
+    border: solid 1px black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.shadow-bg {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+nav {
+    text-transform: lowercase;
+    transition: 0.6s;
+    z-index: 10;
+    letter-spacing: 1px;
+}
+nav .navbar-toggler {
+    padding: 10px 10px;
+    background-color: white;
+}
+nav .navbar-nav .nav-link.show,
+nav .nav-link,
+nav .navbar-brand,
+nav .fa-bars {
+    color: whitesmoke;
+}
+nav .navbar-brand {
+    font-weight: bold;
+}
+
+.navbar .container .collapse .navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.nav-link:focus, .fa-cart-shopping:hover,
+.nav-link:hover,
+.navbar-brand:hover,
+nav .navbar-nav .nav-link.active,
+.navbar-brand span:hover {
+    color: red;
+}
+
+.fa-cart-shopping{
+    transition: color 0.3s, transform 0.3s;
+}
+
+.fa-circle-minus, .fa-circle-plus, .fa-circle-info, .fa-trash{
+    color: black;
+    font-size: 20px;
+}
+
+.fa-circle-minus{
+    color: tomato;
+}
+
+.fa-circle-plus{
+    color: lightgreen;
+}
+
+.cart .row-2{
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.row-2 .count{
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.fa-trash, .fa-car-side{
+    margin: 0 10px;
+    color: red;
+}
+
+.price{
+    text-decoration: underline;
+}
+
+.up{
+    text-decoration: none;
+}
+.fa-circle-check{
+    color: #1c7430;
+    font-size: 30px;
+}
+.fa-car-side{
+    font-size: 30px;
+    transition: 0.3s color, transform 0.3s;
+}
+
+.fa-car-side:hover{
+    color: #c8cbcf;
+}
+
+.section-title{
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.contact {
+    position: relative;
+    background-image: url("https://cdn.pixabay.com/photo/2018/02/21/03/15/bmw-m4-3169357_960_720.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    z-index: 1;
+}
+.contact .bg-shadow-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 29, 29, 0.7);
+    z-index: -1;
+}
+.contact .contact-us {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+}
+.contact .contact-us .contact-item {
+    margin: 50px 0;
+}
+.contact .contact-us .contact-item h3 {
+    margin-bottom: 15px;
+}
+.contact .contact-us .media a {
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    transition: color 0.3s;
+}
+.contact .contact-us .media a:hover {
+    color: red;
+}
+
+.info{
+    color: blue;
+    font-size: 30px;
+}
+
+.text-red{
+    color: red;
+}
+
+.seller-info{
+    text-align: center;
+    margin: 20px;
+}
+
+.avatar-fx{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-flex img{
+    width: 300px;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.seller-more{
+    margin:30px;
+    padding: 10px;
+    text-align: center;
+    background-color: lightgray;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.seller-header{
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid black;
+}
+
+.mini-footer{
+    border-top: 1px solid black;
+    margin-top: 30px;
+}
+
+.trans{
+    text-decoration: underline;
+    color: tomato;
+}
+
+.payments-method{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.all-methods{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    width: 100%;
+    margin: 30px auto;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 10px
+}
+
+.method{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    margin: 30px 0;
+    padding: 30px;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 5px black;
+    height: 100px;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.fa-right-long, .fa-left-long{
+    font-size:50px;
+    color: dodgerblue;
+}
+
+.method img{
+    width: 100px;
+}
+
+.method:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+
+/*DO SKRYPTÓW ITP*/
+.card-selected {
+    background-color: #d3d9df;
+    transform: scale(1.1);
+}
+
+.next-button{
+    width: 10%;
+    margin-bottom: 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    animation: anim 1s linear;
+}
+
+@keyframes anim{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.25;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    75%{
+        opacity: 0.75;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.bg-grey {
+    background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+.blik{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.all-blik{
+    display: inline-block;
+    margin: 30px;
+    padding: 30px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+}
+
+.blik .blik-img img{
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+    /*box-shadow: 2px 2px 5px whitesmoke;*/
+}
+
+section .container .row .col .card .card-body .row .col .fle .quantity{
+    width: 50px;
+    border-radius: 5px;
+}
+
+.all-cars .right{
+    margin: 15px;
+    font-size: 20px;
+}
+
+.all-cars .right a{
+    margin-top: 10px;
+}
+
+.all-cars h3{
+    margin-bottom: 10px;
+}
+
+.all-cars h3{
+    text-align: center;
+}
+
+.filter .form-filter{
+    width: 100%;
+}
+
+.filter .form-filter form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px black;
+}
+
+.filter .form-filter form input{
+    padding: 2px 0;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.filter .form-filter form .price{
+    width: 130px;
+}
+
+.all-cars{
+    width: 95%;
+}
+
+aside {
+    width: 20%;
+    height: auto;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    font-style: italic;
+    color: #29627e;
+}
+
+aside > p {
+    margin: 0.5rem;
+}
+
+aside h5 {
+    margin: 10px;
+}
+
+main .all-card-aside .card-group .col{
+    padding: 30px;
+}
+
+.col.col-sm-12.col-lg-12.mb-12.klasa{
+    font-size: 14px;
+    width: 55%;
+    margin: 20px 20px;
+}
+
+.card{
+    transition: transform 1s;
+}
+
+.card-2:hover{
+    transform: rotateZ(10deg);
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    position: sticky;
+    bottom: 0;
+}
+
+
+.bought-product-all{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.bought-product-all img{*/
+/*    width: 5rem;*/
+/*    border-radius: 15px;*/
+/*}*/
+/*caly jeden koszyk - data*/
+.bought-product-one {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    flex: 3;
+    width: 60%;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px 10px rgba(0, 0, 0, 0.42);
+    background-color: rgb(255, 255, 255);
+}
+.bought-date{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7px;
+}
+.bought-date p{
+    margin: 0;
+}
+
+/*zawartość jednego kozyka*/
+.bought-text {
+    display: none;
+    flex-direction: column;
+    animation: anim-2 0.5s;
+}
+@keyframes anim-2{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.25;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    75%{
+        opacity: 0.75;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.bought-mini{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    margin:10px 40px;
+    box-shadow: -2px 2px 5px 2px black;
+    background-color: #fff7ea;
+}
+.fa-eye, .fa-eye-slash{
+    font-size: 16px;
+}
+
+.information{
+    display: flex;
+    width: 65%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bought-image{
+    display: flex;
+    width: 10rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 2px gray;
+}
+.bought-image img{
+    display: flex;
+}
+
+.information p{
+
+}
+.column-one{
+    display: flex;
+    flex-direction: column;
+}
+.bold{
+    font-weight: bold;
+}
+
+.show{
+    display: flex;
+}
+
+.style-contact-form, .reset-password-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-2, .reset-password-form-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    width: 35%;
+    text-align: center;
+}
+.title-login-form{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-control-2{
+    width: 70%;
+    /*margin: 0 auto;*/
+}
+.form-control{
+
+}
+
+.input-contact{
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*.bought-product-all .text{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.bought-product-all .bought-product-one{*/
+/*    margin: 20px;*/
+/*    border: 1px solid black;*/
+
+/*}*/
+
+
+/*.bought-product-one img{*/
+
+/*}*/
+
+
+
+
+
+
+
+
+
+
+.creditCardForm {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 100px auto;
+    overflow: hidden;
+    padding: 25px;
+    color: #4c4e56;
+    box-shadow: 2px 2px 5px black;
+}
+
+.creditCardForm label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.creditCardForm .heading h3 {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #4c4e56;
+}
+
+.creditCardForm .payment {
+    float: left;
+    font-size: 18px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.creditCardForm .payment .form-group {
+    float: left;
+    margin-bottom: 15px;
+}
+
+.creditCardForm .payment .form-control {
+    line-height: 40px;
+    height: auto;
+    padding: 0 16px;
+}
+
+.creditCardForm .owner {
+    width: 63%;
+    margin-right: 10px;
+}
+
+.creditCardForm .CVV {
+    width: 35%;
+}
+
+.creditCardForm #card-number-field {
+    width: 100%;
+}
+
+.creditCardForm #expiration-date {
+    width: 49%;
+}
+
+.creditCardForm #credit_cards {
+    width: 50%;
+    margin-top: 25px;
+    text-align: right;
+}
+
+.creditCardForm #pay-now {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.creditCardForm .payment .btn {
+    width: 100%;
+    margin-top: 3px;
+    font-size: 24px;
+    background-color: #2ec4a5;
+    color: white;
+}
+
+.creditCardForm .payment select {
+    padding: 10px;
+    margin-right: 15px;
+}
+
+.transparent {
+    opacity: 0.2;
+}
+
+@media(max-width: 650px) {
+    .creditCardForm .owner,
+    .creditCardForm .CVV,
+    .creditCardForm #expiration-date,
+    .creditCardForm #credit_cards {
+        width: 100%;
+    }
+    .creditCardForm #credit_cards {
+        text-align: left;
+    }
+}
+
+.examples {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 0 auto 75px;
+    padding: 30px 50px;
+    color: #4c4e56;
+}
+
+.examples-note{
+    text-align: center;
+    font-size: 14px;
+    max-width: 370px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    color: #7a7a7a;
+}
+
+.examples table {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+}
+
+.send-opinion{
+    position: relative;
+    width: 400px;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px black;
+}
+.send-opinion .post{
+    display: none;
+}
+.send-opinion .text{
+    font-size: 25px;
+    color: #666;
+    font-weight: 500;
+}
+.send-opinion .edit{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+}
+.send-opinion .edit:hover{
+    text-decoration: underline;
+}
+.send-opinion .star-widget input{
+    display: none;
+}
+.form-class{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.star-widget label{
+    font-size: 40px;
+    color: lightgray;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: #fd4;
+}
+input:checked ~ label{
+    color: #fd4;
+}
+input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+.choice-1:checked ~ form header:before{
+    content: "Bardzo słabo";
+}
+#rate-2:checked ~ form header:before{
+    content: "Słabo";
+}
+#rate-3:checked ~ form header:before{
+    content: "Przeciętnie";
+}
+#rate-4:checked ~ form header:before{
+    content: "Dobrze";
+}
+#rate-5:checked ~ form header:before{
+    content: "Świetnie";
+}
+.none{
+    display: none;
+}
+/*.container form{*/
+/*    text-align: center;*/
+/*}*/
+input:checked ~ .none{
+    display: block;
+}
+form header{
+    width: 100%;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+form .textarea{
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid #333;
+    background: lightgray;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+.textarea textarea:focus{
+    border-color: #444;
+}
+
+
+
+.info-opinion, .opinion-an-your, .procent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.info-opinion .info-comments{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 60%;
+    margin: 10px auto;
+    padding: 30px 0;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 10px;
+    background-image: url("https://cdn.pixabay.com/photo/2016/08/14/11/09/hand-1592415_960_720.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+}
+
+.info-opinion .hero-image-comments{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 29, 29, 0.5);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.opinion-an-your-info{
+    width:100%;
+    max-width: 80%;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px black;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background: linear-gradient(
+            190deg,
+            rgb(239, 239, 191) 5%,
+            rgba(255, 255, 255, 0.67) 100%,
+            rgb(232, 231, 209) 10%
+    );
+}
+
+.opinion-par{
+    display: flex;
+    justify-content: space-between;
+}
+
+.opinion-div{
+    padding: 10px;
+}
+
+
+.form-add-car{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 2px solid red;*/
+}
+
+.add-car{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    /*border: 2px solid blue;*/
+    width: 70%;
+    margin: 30px;
+}
+.title-add-car{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /*border: 2px solid black;*/
+}
+
+.input-add{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    /*border: 2px solid green;*/
+    text-align: center;
+}
+
+.section-one, .section-two, .section-three{
+    /*border: 2px solid yellow;*/
+    padding: 10px;
+    width: 30%;
+}
+.section-two{
+    /*border: 2px solid yellow;*/
+}
+.section-three{
+    /*border: 2px solid yellow;*/
+}
+.section-four{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+    /*border: 2px solid yellow;*/
+}
+
+.description-car{
+    width: 60%;
+    margin: 10px auto;
+    text-align: center;
+    /*border: 2px solid orange;*/
+}
+
+.container .card-group .col .card-add-change{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.container .card-group .col .card-add-change .zero{
+    z-index: 100;
+    color: red;
+}
+
+.more-car .container .important-info .zero{
+    z-index: 100;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.index-aside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left:10px;
+}
+
+.container .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+}
+
+.container .pagination .next, .container .pagination .previous, .container .pagination .number-page, .container .pagination .next-2, .container .pagination .last{
+    margin: 10px;
+    position: absolute;
+}
+
+
+.container .pagination .next{
+    margin-top: 35px;
+    right: 550px;
+}
+.container .pagination .previous{
+    margin-top: 35px;
+    right: 450px;
+
+}
+.container .pagination .number-page{
+    margin-top: 45px;
+}
+.container .pagination .next-2{
+    margin-top: 35px;
+    left: 450px;
+}
+.container .pagination .last{
+    margin-top: 35px;
+    left: 550px;
+}
+.container .pagination a{
+    text-decoration: none;
+}
+
+.all-cars .container .card-group .col .card-add-change .zero{
+    z-index: 100;
+    color: red;
+}
+
+.container .procent {
+    width: 100%;
+    max-width: 40%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.container .procent .mean{
+    padding:10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: -2px 2px 5px 10px #a9a9a9;
+    background-color: #dcdcdc;
+}
+
+.container .procent span{
+    font-size: 20px;
+    font-weight: bold;
+}
+

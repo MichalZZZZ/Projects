@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Płatność{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <header>
+
+        </header>
+        <div class="creditCardForm">
+            <div class="heading">
+                <h3>Potwierdź zakup</h3>
+                <h5 class="text-center">Razem do zapłaty: {{ totalValue }} zł</h5>
+            </div>
+            <div class="payment">
+                {% form_theme form 'bootstrap_5_layout.html.twig' %}
+                {{ form_start(form, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-group owner">
+                        <label for="owner">{{ form_row(form.dataperson) }}</label>
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">{{ form_row(form.cvv) }}</label>
+                    </div>
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">{{ form_row(form.numbercard) }}</label>
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>{{ form_row(form.expirationdate) }}</label>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="{{ asset('assets/images/mastercard.jpg') }}" id="visa">
+                        <img src="{{ asset('assets/images/visa.jpg') }}" id="mastercard">
+                        <img src="{{ asset('assets/images/amex.jpg') }}" id="amex">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <p><button class="btn btn-primary mt-3" type="submit">Zatwierdź</button></p>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+
+            var owner = $('#owner');
+            var cardNumber = $('#cardNumber');
+            var cardNumberField = $('#card-number-field');
+            var CVV = $("#cvv");
+            var mastercard = $("#mastercard");
+            var confirmButton = $('#confirm-purchase');
+            var visa = $("#visa");
+            var amex = $("#amex");
+
+            // Use the payform library to format and validate
+            // the payment fields.
+
+            cardNumber.payform('formatCardNumber');
+            CVV.payform('formatCardCVC');
+
+
+            cardNumber.keyup(function() {
+
+                amex.removeClass('transparent');
+                visa.removeClass('transparent');
+                mastercard.removeClass('transparent');
+
+                if ($.payform.validateCardNumber(cardNumber.val()) == false) {
+                    cardNumberField.addClass('has-error');
+                } else {
+                    cardNumberField.removeClass('has-error');
+                    cardNumberField.addClass('has-success');
+                }
+
+                if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
+                    mastercard.addClass('transparent');
+                    amex.addClass('transparent');
+                } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
+                    mastercard.addClass('transparent');
+                    visa.addClass('transparent');
+                } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
+                    amex.addClass('transparent');
+                    visa.addClass('transparent');
+                }
+            });
+
+            confirmButton.click(function(e) {
+
+                e.preventDefault();
+
+                var isCardValid = $.payform.validateCardNumber(cardNumber.val());
+                var isCvvValid = $.payform.validateCardCVC(CVV.val());
+
+                if(owner.val().length < 5){
+                    alert("Wrong owner name");
+                } else if (!isCardValid) {
+                    alert("Wrong card number");
+                } else if (!isCvvValid) {
+                    alert("Wrong CVV");
+                } else {
+                    alert("Everything is correct");
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

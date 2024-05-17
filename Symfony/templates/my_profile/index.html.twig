@@ -1,0 +1,103 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Mój profil{% endblock %}
+
+{% block content %}
+    <main class="myprofile">
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert mt-3 alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert mt-3 alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    <div class="profile d-flex justify-content-center align-items-center">
+        <div class="card data-person mt-4 mb-4 text-center">
+            <div class="card-header">
+                <h5>Panel użytkownika</h5>
+            </div>
+            <h5 class="mt-2">Twoje dane osobowe</h5>
+            <p>Imię: {{ app.user.name }}</p>
+            <p>Nazwisko: {{ app.user.lastname }}</p>
+            <p>Nr. telefonu: {{ app.user.phone }}</p>
+            <div class="btn"><a href="{{ path('app_edit_data_person') }}" class="btn btn-warning" id="editButton">Edytuj</a></div>
+            <h5 class="mt-4">Dane logowania</h5>
+            <p>Login: {{ app.user.username }}</p>
+            <p>Email: {{ app.user.email }}</p>
+            <div class="btn"><a href="{{ path('app_edit_data') }}" class="btn btn-warning" id="editButton">Edytuj</a></div>
+            <div class="center text-center">
+                <a href="{{ path('app_update_password') }}" class="btn btn-primary mt-5 mb-3 w-25 text-center" id="editButton">Zmień hasło</a>
+                <a href="{{ path('app_delete_user') }}" class="btn btn-danger mt-5 w-25 mb-3" id="delete">Usuń konto</a>
+            </div>
+        </div>
+        <div class="avatar">
+            <h5>Twój aktualny awatar</h5>
+
+            <img src="{{ asset('img/hosting/'~ latestPhoto) }}" alt="Moje zdjęcie">
+
+            {{ form_start(photoForm) }}
+            {{ form_widget(photoForm) }}
+            <input type="submit" value="Dodaj" class="form-control add-avatar btn btn-success mt-3" />
+            {{ form_end(photoForm) }}
+            <a href="{{ path('app_delete_avatar') }}"><input type="submit" value="Usuń" class="form-control btn btn-success mt-3" /></a>
+            <a href="{{ path('app_bought_product') }}" class="bought">Kupione<i class="fa-solid fa-left-long"></i></a>
+            <a href="{{ path('app_sold_product') }}" class="sold">Sprzedane<i class="fa-solid fa-right-long"></i></a>
+        </div>
+    </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="procent">
+                {% if comments|length > 0 %}
+                    <p class="x">Liczba opinii: <span>{{ comments|length }}</span></p>
+                    <div class="mean">
+                        <p class="x">Twoja średnia ocena: <h2 class="text-center mt">{{ mean }}</h2></p>
+                    </div>
+                    <p class="text-muted"> <span>{{ percent }} % </span> poleca cię jako sprzedającego</p>
+                {% endif %}
+            </div>
+
+            <div class="info-opinion">
+                {% if comments|length > 0 %}
+                <h5>Twoje opinie</h5>
+                <div class="info-comments" id="opinions-section">
+                {% for comment in comments %}
+                    <div class="opinion-an-your-info">
+                        <div class="opinion-div">
+                            <p class="opinion-par">Opinia: {{ comment.scale }}<small class="text-muted">dodał: {{ comment.loginadduser }}</small></p>
+                            <div class="opinion-description">
+                                <p class="opinion-par">{{ comment.description }}</p><small>{{ comment.creationdate |date('d.m.Y H:i') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                    <div class="hero-image-comments"></div>
+
+
+
+            <div class="pagination">
+                {% if page > 1 %}
+                    <div class="next"><a href="{{ path('app_my_profile', {'page': 1}) }}#opinions-section" class="fa-solid fa-angles-left"></a></div>
+                    <div class="previous"><a href="{{ path('app_my_profile', {'page': page - 1}) }}#opinions-section" class="fa-solid fa-angle-left"></a></div>
+                {% endif %}
+
+                <div class="number-page"><p>Strona {{ page }} z {{ totalPages }}</p></div>
+
+                {% if page < totalPages %}
+                    <div class="next-2"><a href="{{ path('app_my_profile', {'page': page + 1}) }}#opinions-section" class="fa-solid fa-angle-right"></a></div>
+                    <div class="last"><a href="{{ path('app_my_profile', {'page': totalPages}) }}#opinions-section" class="fa-solid fa-angles-right"></a></div>
+                {% endif %}
+            </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    </main>
+{% endblock %}

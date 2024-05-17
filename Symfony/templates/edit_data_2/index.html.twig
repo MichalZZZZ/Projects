@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja danych{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Edytuj dane personalne</h5>
+            </div>
+            {% form_theme editDataTwo 'bootstrap_5_layout.html.twig' %}
+            {{ form_start(editDataTwo) }}
+            {{ form_row(editDataTwo.name) }}
+            {{ form_row(editDataTwo.lastname) }}
+            {{ form_row(editDataTwo.phone) }}
+            {{ form_row(editDataTwo.password) }}
+
+            <p><button type="submit" class="btn btn-primary mt-3 p-2">Zapisz zmiany</button></p>
+            <p><a href="{{ path('app_my_profile', {'page': 1}) }}" class="btn btn-danger mt-3 p-2">Anuluj</a></p>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_end(editDataTwo) }}
+        </div>
+    </div>
+{% endblock %}

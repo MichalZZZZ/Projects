@@ -1,0 +1,219 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moje samochody{% endblock %}
+
+{% block content %}
+        <section class="cart h-100 h-custom">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    {% for flashMessage in app.flashes('success') %}
+                        <div class="alert alert-success promo">{{ flashMessage }}</div>
+                    {% endfor %}
+                    {% for flashMessage in app.flashes('error') %}
+                        <div class="alert alert-danger promo">{{ flashMessage }}</div>
+                    {% endfor %}
+                    <div class="col col-12">
+                        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                            <div class="card-body p-0">
+                                <div class="row g-0">
+                                    <div class="col col-lg-8">
+                                        <div class="fle p-5">
+                                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                                <h1 class="fw-bold mb-0 text-black">Twój koszyk</h1>
+                                                <h6 class="mb-0 text-muted">POZYCJE: {{ count }}</h6>
+                                                {% if totalValue > 0 %}
+                                                    <a href="{{ path('app_cart_clear')}}" class="btn pm btn-danger mb-0" id="clear-cart">Wyczyść koszyk</a>
+                                                {% endif %}
+                                            </div>
+
+                                            {% for carInfo in cart %}
+                                            <div class="row-2 mb-4 d-flex justify-content-between align-items-center">
+                                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                                    <img src="{{ carInfo.imageUrl }}" class="img-fluid rounded-3" style="width: 200px;" alt="{{ carInfo.product.name() }}">
+                                                </div>
+                                                <div class="col-md-2 col-lg-2 col-xl-2 text-center">
+                                                    <h5 class="text-muted">{{ carInfo.product.name }}</h5>
+                                                    <h6 class="text-black mb-0">{{ carInfo.product.model }}</h6>
+                                                </div>
+                                                <div class="col-md-1 col-lg-1 col-xl-1 d-flex flex-direction-column text-center">
+                                                        <form method="post" action="{{ path('app_cart_add_count', {'id': carInfo.product.id}) }}">
+                                                            <input type="number" name="quantity" value="{{ carInfo.quantity }}" class="quantity" min="1" max="{{ carInfo.positionQuantity }}" />
+                                                            z: <u>{{ carInfo.positionQuantity }} szt.</u>
+                                                            <button type="submit" class="btn btn-primary mt-2">OK</button>
+                                                        </form>
+                                                </div>
+                                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                    <h6 class="price mb-0">{{ carInfo.product.price }} zł</h6>
+                                                </div>
+                                                <div class="col-md-1 col-lg-1 col-xl-1">
+                                                    <a href="{{ path('app_show_car', {'id': carInfo.product.id}) }}" class="pm-2"><i class="fa-solid icon fa-circle-info"></i></a>
+                                                </div>
+                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end me-2">
+                                                    <a href="{{ path('app_cart_remove_position',  {'id': carInfo.product.id}) }}" class="text-muted" id="button-remove-position"><i class="fa-solid fa-trash"></i></a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                            <div class="pt-5">
+                                                <h6 class="mb-0"><a href="{{ path('app_all_cars') }}" class="text-body"><i
+                                                                class="fas fa-long-arrow-alt-left me-2"></i>Kontynuuj zakupy</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 bg-grey">
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">W skrócie</h3>
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <h5 class="text-uppercase">Wartość koszyka:</h5>
+                                                <h5>{{ firstTotalValue }} zł</h5>
+                                            </div>
+
+                                            <h5 class="text-uppercase mb-3">MASZ KOD?</h5>
+
+                                            <div class="mb-5">
+                                                <div class="form-outline">
+                                                    {{ form_start(form) }}
+                                                    {{ form_row(form.code) }}
+                                                    <button type="submit" class="btn btn-primary mt-3 p-2 mb-3" id="button-promo">Realizuj kod</button>
+                                                    {{ form_end(form) }}
+                                                </div>
+                                            </div>
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <h5 class="text-uppercase">W sumie</h5>
+                                                    <h5>{{ totalValue }} zł</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <h5 class="text-uppercase text-red">Zaoszczędzone</h5>
+                                                    <h5>{{ saving }} zł</h5>
+                                            </div>
+                                            {% if totalValue > 0 %}
+                                            <h5>Kupuję i płacę<p class="pay-2"><a href="{{ path('app_payments_method') }}" class="pay"><i class="fa-solid fa-right-long"></i></a></p></h5>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <script>
+        function handleCartResponse(response) {
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: response.message,
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: response.message,
+                });
+            }
+        }
+        const clearButton = document.querySelector('#clear-cart');
+        clearButton.addEventListener('click', event => {
+                event.preventDefault();
+                const url = clearButton.href;
+
+                fetch(url, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => handleCartResponse(data))
+                    .catch(error => {
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'Wystąpił nieznany błąd.',
+                        });
+                    });
+            });
+
+        // function cartPromo(response) {
+        //     if (response.success) {
+        //         Swal.fire({
+        //             icon: 'success',
+        //             title: 'Udało się!',
+        //             text: response.message,
+        //         }).then(() => {
+        //             location.reload();
+        //         });
+        //     } else {
+        //         Swal.fire({
+        //             icon: 'error',
+        //             title: 'Błąd!',
+        //             text: response.message,
+        //         });
+        //     }
+        // }
+        // const buttonPromo = document.querySelector('#button-promo');
+        // buttonPromo.addEventListener('click', event => {
+        //     event.preventDefault();
+        //     const url = buttonPromo.href;
+        //
+        //     fetch(url, { method: 'GET' })
+        //         .then(response => response.json())
+        //         .then(data => handleCartResponse(data))
+        //         .catch(error => {
+        //             console.error(error);
+        //             Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Błąd!',
+        //                 text: 'Wystąpił nieznany błąd.',
+        //             });
+        //         });
+        // });
+
+
+        function cartDeletePosition(response) {
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Udało się!',
+                    text: response.message,
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Błąd!',
+                    text: response.message,
+                });
+            }
+        }
+        const buttonRemovePosition = document.querySelector('#button-remove-position');
+        buttonRemovePosition.addEventListener('click', event => {
+            event.preventDefault();
+            const url = buttonRemovePosition.href;
+
+            fetch(url, { method: 'GET' })
+                .then(response => response.json())
+                .then(data => handleCartResponse(data))
+                .catch(error => {
+                    console.error(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Błąd!',
+                        text: 'Wystąpił nieznany błąd.',
+                    });
+                });
+        });
+
+
+    </script>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RemindPasswordController!{% endblock %}
+
+{% block content %}
+
+{#    <section class="reset-password">#}
+{#        <div class="container">#}
+{#            <h3 class="text-center mt-3">Resetuj hasło</h3>#}
+{#            <div class="reset-password-form">#}
+{#                <form method="post" action="{{ path('app_remind_password') }}" class="reset-password-form-2">#}
+{#                    <p>Login: <input type="text" name="login"  class="remind"/></p>#}
+{#                    <p>Email: <input type="email" name="email"  class="remind"/></p>#}
+{#                    <p><button type="submit" class="btn btn-primary mt-2">Reset</button></p>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Resetuj hasło</h5>
+            </div>
+            <form method="post" action="{{ path('app_remind_password') }}" class="form-control">
+                <div class="input-contact">
+                    <p>Login:</p> <input type="text" name="login"  class="remind form-control"/>
+                    <p>Email:</p> <input type="email" name="email"  class="remind form-control"/>
+                    <p><button type="submit" class="btn btn-primary mt-2">Reset</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

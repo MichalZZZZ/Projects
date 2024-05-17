@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edycja danych{% endblock %}
+
+{% block content %}
+
+{#    <div class="container update-password w-25">#}
+{#        <h3 class="text-center mt-3">Zmiana hasła</h3>#}
+{#        <div class="row">#}
+{#            <div class="col-md-6 offset-md-3">#}
+
+{#                {{ form_start(updatePassword, {'attr': {'class': 'd-flex flex-column mb-4', 'id': 'updatePassword'}}) }}#}
+{#                #}{#                {{ form_widget(editData, {'attr': {'class': 'form-control'}}) }}#}
+{#                <div class="form-group mt-2">#}
+{#                    {{ form_label(updatePassword.oldPassword) }}#}
+{#                    {{ form_widget(updatePassword.oldPassword, {'attr': {'class': 'form-control'}}) }}#}
+{#                </div>#}
+{#                <div class="form-group mt-2">#}
+{#                    {{ form_label(updatePassword.password) }}#}
+{#                    {{ form_widget(updatePassword.password, {'attr': {'class': 'form-control'}}) }}#}
+{#                </div>#}
+{#                <div class="form-group mt-2">#}
+{#                    {{ form_label(updatePassword.confirmPassword) }}#}
+{#                    {{ form_widget(updatePassword.confirmPassword, {'attr': {'class': 'form-control'}}) }}#}
+{#                </div>#}
+{#                <button type="submit" class="btn btn-primary mt-3 mb-3 p-2" id="save-button">Zapisz zmiany</button>#}
+{#                <a href="{{ path('app_my_profile') }}" class="btn btn-danger mt-3 mb-3 p-2">Anuluj</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    {{ form_end(updatePassword) }}#}
+{#    <div class="container w-50">#}
+{#    {% for flashMessage in app.flashes('success') %}#}
+{#        <div class="alert alert-success">{{ flashMessage }}</div>#}
+{#    {% endfor %}#}
+{#    {% for flashMessage in app.flashes('error') %}#}
+{#        <div class="alert alert-danger">{{ flashMessage }}</div>#}
+{#    {% endfor %}#}
+{#    </div>#}
+
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Zmień hasło</h5>
+            </div>
+                {% for flashMessage in app.flashes('success') %}
+                    <div class="alert alert-success">{{ flashMessage }}</div>
+                {% endfor %}
+                {% for flashMessage in app.flashes('error') %}
+                    <div class="alert alert-danger">{{ flashMessage }}</div>
+                {% endfor %}
+            {{ form_start(updatePassword, {'attr': {'class': 'd-flex flex-column mb-4', 'id': 'updatePassword'}}) }}
+            {#                {{ form_widget(editData, {'attr': {'class': 'form-control'}}) }}#}
+            <div class="form-group mt-2">
+                {{ form_label(updatePassword.oldPassword) }}
+                {{ form_widget(updatePassword.oldPassword, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group mt-2">
+                {{ form_label(updatePassword.password) }}
+                {{ form_widget(updatePassword.password, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group mt-2">
+                {{ form_label(updatePassword.confirmPassword) }}
+                {{ form_widget(updatePassword.confirmPassword, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3 p-2" id="save-button">Zapisz zmiany</button>
+            <a href="{{ path('app_my_profile', {'page': 1}) }}" class="btn btn-danger mt-3 mb-3 p-2">Anuluj</a>
+            {{ form_end(updatePassword) }}
+        </div>
+    </div>
+
+{% endblock %}

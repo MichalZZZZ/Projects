@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wszystkie przedmioty sprzedającego{% endblock %}
+
+{% block content %}
+    <section class="first-section">
+        <div class="container text-center">
+            <h3 class="h3 mt-3 mb-3">Wszystkie przedmioty sprzedającego: <span class="trans">{{ seller }}</span></h3>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {%endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="card-group mb-3">
+                {% for item in listItems %}
+                    <div class="col col-sm-12 col-lg-4 mb-3">
+                        <div class="card">
+                            <img src="{{ item.imageURL }}" class="card-img-top" alt="{{ item.imageURL }}">
+                            <div class="card-body">
+{#                                <small class="text-muted">Sprzedający: {{  item.item.owner.username }}</small>#}
+                                <p class="text-muted">Dodane: {{  item.item.getCreationDate() |date('d.m.Y H:i') }}</p>
+                                <h5 class="card-title">Marka: {{  item.item.getName() }}</h5>
+                                <p class="card-text">Model: {{  item.item.getModel() }}</p>
+                                <h6 class="card-text">Cena: {{  item.item.getPrice() }} zł</h6>
+                                <a href="{{ path('app_show_car', {'id': item.item.id}) }}" title="Więcej informacji" class="btn m-3"><i class="fa-solid info fa-circle-info"></i></a>
+                                {% if app.user %}
+                                    <a href="{{ path('app_cart_add', {'id': item.item.id}) }}" title="Dodaj do koszyka" class="btn success m-3" id="add-button-cart"><i class="fa-solid fa-cart-plus"></i></a>
+                                {% endif %}
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Dostępnych: {{ item.item.quantity }}</small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function handleCartResponse(response) {
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Udało się!',
+                    text: response.message,
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Błąd!',
+                    text: response.message,
+                });
+            }
+        }
+        const addToCartButtons = document.querySelectorAll('#add-button-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+                const url = button.href;
+
+                fetch(url, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => handleCartResponse(data))
+                    .catch(error => {
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Błąd!',
+                            text: 'Wystąpił nieoczekiwany błąd.',
+                        });
+                    });
+            });
+        });
+    </script>
+{% endblock %}

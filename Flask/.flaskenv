@@ -1,0 +1,2 @@
+FLASK_APP=clinic.py
+FLASK_DEBUG=True

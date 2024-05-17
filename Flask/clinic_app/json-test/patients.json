@@ -1,0 +1,42 @@
+[
+	{
+		"first_name": "Michal",
+		"last_name": "Ziolkowski",
+		"pesel": "65082724332",
+		"phone_number": "888888888",
+		"address": "ul. Sloneczna 54, 10-722 Olsztyn",
+		"user_id": 7
+	},
+	{
+		"first_name": "Michal",
+		"last_name": "Ziolkowski",
+		"pesel": "96010527859",
+		"phone_number": "999999999",
+		"address": "ul. Sloneczna 54, 10-722 Olsztyn",
+		"user_id": 8
+	},
+	{
+		"first_name": "Adam",
+		"last_name": "Ziolkowski",
+		"pesel": "83050484844",
+		"phone_number": "123456123",
+		"address": "ul. Sloneczna 54, 10-722 Olsztyn",
+		"user_id": 9
+	},
+	{
+		"first_name": "Adam",
+		"last_name": "Ziolkowski",
+		"pesel": "84110722759",
+		"phone_number": "123456122",
+		"address": "ul. Sloneczna 54, 10-722 Olsztyn",
+		"user_id": 15
+	},
+	{
+		"first_name": "Adam",
+		"last_name": "Ziolkowski",
+		"pesel": "68122792643",
+		"phone_number": "123454436",
+		"address": "ul. Sloneczna 54, 10-722 Olsztyn",
+		"user_id": 16
+	}
+]

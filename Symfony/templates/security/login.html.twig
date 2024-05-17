@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Mój profil{% endblock %}
+
+{% block content %}
+
+{#    <form method="post">#}
+{#    <div class="d-flex justify-content-center align-items-center">#}
+{#        <div class="card form-control-2">#}
+{#            <div class="card-header title-login-form">#}
+{#                <h5>Zaloguj się</h5>#}
+{#            </div>#}
+{#            <h6 class="mt-2">Login</h6>#}
+{#            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="login mt-3 form-control" autocomplete="username" required autofocus>#}
+{#            <h6 class="mt-2">Hasło</h6>#}
+{#            <input type="password" name="password" id="inputPassword" class="login mt-2 form-control" autocomplete="current-password" required>#}
+
+{#            <div class="checkbox mb-3">#}
+{#                <label>#}
+{#                    <input class="check mt-2" type="checkbox" name="_remember_me"> Zapamiętaj hasło#}
+{#                </label>#}
+{#            </div>#}
+{#            <p class="text-center"><button class="btn btn-primary mt-3 mb-3" type="submit">Zaloguj</button></p>#}
+{#            <p><a href="{{ path('app_remind_password') }}">Zapomniałeś hasła?</a></p>#}
+{#            <p><a href="{{ path('app_register') }}">Nie masz konta? Zarejestruj się!</a></p>#}
+{#        </div>#}
+{#            <input type="hidden" name="_csrf_token"#}
+{#                   value="{{ csrf_token('authenticate') }}">#}
+
+{#            {% if app.user %}#}
+{#                <div class="mb-3">#}
+{#                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#    </div>#}
+{#        {% if error %}#}
+{#            <div class="alert w-25 text-center alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#        {% endif %}#}
+{#    </form>#}
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Zaloguj się</h5>
+            </div>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <form method="post" class="form-control-2">
+                <h6 class="mt-2">Login</h6>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="login form-control mt-3" autocomplete="username" required autofocus>
+                <h6 class="mt-2">Hasło</h6>
+                <input type="password" name="password" id="inputPassword" class="login form-control mt-2" autocomplete="current-password" required>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input class="check mt-2" type="checkbox" name="_remember_me"> Zapamiętaj hasło
+                    </label>
+                    <p class="text-center"><button class="btn btn-primary mt-3 mb-3" type="submit">Zaloguj</button></p>
+                    <p><a href="{{ path('app_remind_password') }}">Zapomniałeś hasła?</a></p>
+                    <p><a href="{{ path('app_register') }}">Nie masz konta? Zarejestruj się!</a></p>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+                    {% if error %}
+                        <div class="alert w-25 text-center alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+[
+	{
+		"id": 2,
+		"submission_id": 8,
+		"recommendations": "jakas rekomendacja",
+		"drugs": "jakis lek",
+		"diagnosis": "jakas diagnoza"
+	},
+	{
+		"id": 3,
+		"submission_id": 9,
+		"recommendations": "jakas rekomendacja 2",
+		"drugs": "jakis lek 2",
+		"diagnosis": "jakas diagnoza 2"
+	},
+	{
+		"id": 4,
+		"submission_id": 10,
+		"recommendations": "jakas rekomendacja 3",
+		"drugs": "jakis lek 3",
+		"diagnosis": "jakas diagnoza 3"
+	}
+]

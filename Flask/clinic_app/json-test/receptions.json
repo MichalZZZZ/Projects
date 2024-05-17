@@ -1,0 +1,16 @@
+[
+	{
+		"id": 2,
+		"name": "Marta",
+		"last_name": "Kowalska",
+		"phone_number": "423958771",
+		"user_id": 11
+	},
+	{
+		"id": 3,
+		"name": "Sara",
+		"last_name": "Kowalska",
+		"phone_number": "666555789",
+		"user_id": 13
+	}
+]

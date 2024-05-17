@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły samochodu{% endblock %}
+
+{% block content %}
+    <section class="more-car">
+    <div class="container border">
+        <h3 class="details mt-3 text-center mb-3">Szczegóły samochodu</h3>
+        <div class="header">
+        <div class="imageGallery1">
+            <img src="{{ ShowCars.getPhotopath() }}" class="image-2" alt="{{ ShowCars.getName() }}">
+        </div>
+        <div class="important-info">
+            <div class="text">
+                <h3 class="title-position">NAJWAŻNIEJSZE INFORMACJE</h3>
+                <p>Marka: {{ ShowCars.getName() }}</p>
+                <p>Model: {{ ShowCars.getModel() }}</p>
+                <p>Rok produkcji: {{ ShowCars.getYearOfProduction() }}</p>
+                <p>Cena: {{ ShowCars.price() }} zł</p>
+            </div>
+            {% if app.user %}
+                {% if flaga %}
+                    {% if quan > 0 %}
+                    <a href="{{ path('app_cart_add', {'id': ShowCars.id}) }}" title="Dodaj do koszyka" class="btn success-add m-3" id="add-button-cart-2"><i class="fa-solid fa-cart-plus"></i></a>
+                    {% else %}
+                        <small class="zero">PRODUKT NIEDOSTĘPNY</small>
+                    {% endif %}
+                    <small class="seller">Sprzedający: <a href="{{ path('app_show_seller', {'id': ShowCars.owner.id, 'page': 1}) }}" title="Informacje o sprzedającym" class="seller-link">{{ ShowCars.owner.username }}</a></small>
+                {% else %}
+                    <small class="seller">Sprzedający: <a href="#" title="Informacje o sprzedającym" class="seller-link">TY</a></small>
+                {% endif %}
+            {% endif %}
+            <div class="shadow-1"></div>
+        </div>
+        </div>
+        <div class="more">
+        <div class="engine">
+            <div class="text">
+                <h4 class="title-position">Silnik</h4>
+                <p>Silnik: {{ ShowCars.getEngine() }}</p>
+                <p>Moc: {{ ShowCars.getPower() }}</p>
+            </div>
+            <div class="shadow-1"></div>
+        </div>
+        <div class="data-technic">
+            <div class="text">
+                <h4 class="title-position">Dane techniczne</h4>
+                <p>Przyśpieszenie: {{ ShowCars.getAcceleration() }}</p>
+                <p>Masa własna: {{ ShowCars.getWeight() }}</p>
+            </div>
+            <div class="shadow-1"></div>
+        </div>
+        <div class="description">
+            <div class="text">
+                <h4 class="title-position">Opis</h4>
+                <p>{{ ShowCars.getDescription() }}</p>
+            </div>
+            <div class="shadow-1"></div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <script>
+        function handleCartResponse(response) {
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Udało się!',
+                    text: response.message,
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Błąd!',
+                    text: response.message,
+                });
+            }
+        }
+        const addToCartButtons2 = document.querySelectorAll('#add-button-cart-2');
+        addToCartButtons2.forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+                const url = button.href;
+
+                fetch(url, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => handleCartResponse(data))
+                    .catch(error => {
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Błąd!',
+                            text: 'Wystąpił nieoczekiwany błąd.',
+                        });
+                    });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodawanie samochodu{% endblock %}
+
+{% block content %}
+
+    <div class="title-add-car">
+        <h5>Dodaj samochód</h5>
+    </div>
+    <div class="form-add-car">
+        <div class="add-car">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% form_theme form 'bootstrap_5_layout.html.twig' %}
+            {{ form_start(form, {'attr': {'class': 'form-control-2', 'id': 'form-add-car'}} ) }}
+            <div class="input-add mt-3">
+                <div class="section-one">
+                    <h6>{{ form_row(form.name) }}</h6>
+                    <h6>{{ form_row(form.model) }}</h6>
+                    <h6>{{ form_row(form.year_of_production) }}</h6>
+                </div>
+                <div class="section-two">
+                    <h6>{{ form_row(form.photopath) }}</h6>
+                    <h6>{{ form_row(form.conditioncar) }}</h6>
+                    <h6>{{ form_row(form.price) }}</h6>
+                </div>
+                <div class="section-three">
+                    <h6>{{ form_row(form.engine) }}</h6>
+                    <h6>{{ form_row(form.power) }}</h6>
+                    <h6>{{ form_row(form.acceleration) }}</h6>
+                </div>
+            </div>
+            <div class="section-four">
+                <h6 class="h6-one">{{ form_row(form.weight) }}</h6>
+                <h6 class="h6-three">{{ form_row(form.quantity) }}</h6>
+            </div>
+            <div class="description-car">
+                <h6 class="h6-two">{{ form_row(form.description) }}</h6>
+            </div>
+            <p class="text-center"><button type="submit" class="btn btn-primary mt-3" id="add-car">Dodaj samochód</button></p>
+            <p class="text-center"><a href="{{ path('index') }}" class="btn btn-danger mt-2">Anuluj</a></p>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <script>
+        function handleCarResponse(response) {
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: response.message,
+                }).then(() => {
+                    window.location.href = '{{ path('app_add_new_car') }}';
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: response.message,
+                });
+            }
+        }
+
+        const addButton = document.querySelector('#add-car');
+        addButton.addEventListener('click', event => {
+            event.preventDefault();
+            const form = document.querySelector('#form-add-car'); // Replace 'your-form-id' with the actual form ID
+            const url = form.action;
+
+            fetch(url, {
+                method: 'POST',
+                body: new FormData(form),
+            })
+                .then(response => response.json())
+                .then(data => handleCarResponse(data))
+                .catch(error => {
+                    console.error(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Wystąpił nieznany błąd.',
+                    });
+                });
+        });
+    </script>
+
+
+
+{% endblock %}

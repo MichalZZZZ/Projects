@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block content %}
+    <section class="contact-form">
+        <div class="container">
+            <h3 class="text-center mt-3">Kontakt</h3>
+            {% for message in app.flashes('success') %}
+                <div class="alert mt-3 alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert mt-3 alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="style-contact-form">
+
+            </div>
+        </div>
+    </section>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Kontakt</h5>
+            </div>
+            <form method="post" action="{{ path('app_mail') }}" class="form-control">
+                <div class="input-contact">
+                    <p>Temat:</p> <input type="text" name="theme"  class="mail form-control"/>
+                    <p>Treść:</p> <textarea name="contents"  class="mail form-control"></textarea>
+                    <p><button type="submit" class="btn btn-primary mt-2">Wyślij</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{#    {{ form_start(form) }}#}
+{#    {{ form_row(form.theme) }}#}
+{#    {{ form_row(form.contents) }}#}
+{#    {{ form_end(form) }}#}
+
+{% endblock %}

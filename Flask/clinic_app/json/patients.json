@@ -1,0 +1,32 @@
+[
+	{
+		"id": 1,
+		"first_name": "Michał",
+		"last_name": "Ziolkowski",
+		"pesel": "65082724332",
+		"date_of_birth": "1965-08-27",
+		"phone_number": "888888888",
+		"address": "ul. Słoneczna 54, 10-722 Olsztyn",
+		"user_id": 6
+	},
+	{
+		"id": 2,
+		"first_name": "Michał",
+		"last_name": "Ziolkowski",
+		"pesel": "96010527859",
+		"date_of_birth": "1996-01-05",
+		"phone_number": "999999999",
+		"address": "ul. Słoneczna 54, 10-722 Olsztyn",
+		"user_id": 7
+	},
+	{
+		"id": 3,
+		"first_name": "Adam",
+		"last_name": "Ziolkowski",
+		"pesel": "83050484844",
+		"date_of_birth": "1983-05-04",
+		"phone_number": "123456123",
+		"address": "ul. Słoneczna 54, 10-722 Olsztyn",
+		"user_id": 8
+	}
+]

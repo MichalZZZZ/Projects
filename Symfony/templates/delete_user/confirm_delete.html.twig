@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+{#    {{ form_start(deleteData, {'attr': {'class': 'd-flex flex-column mb-4'}}) }}#}
+{#    <div class="center-now text-center">#}
+{#        <div class="container delete-account w-25">#}
+{#        <h3 class="mt-3 mb-3">Potwierdź usunięcie konta</h3>#}
+{#            <div class="form-group mt-2">#}
+{#                {{ form_label(deleteData.password) }}#}
+{#                {{ form_widget(deleteData.password, {'attr': {'class': 'form-control'}}) }}#}
+{#            </div>#}
+{#            <div class="form-group mt-2">#}
+{#                {{ form_label(deleteData.passwordConfirm) }}#}
+{#                {{ form_widget(deleteData.passwordConfirm, {'attr': {'class': 'form-control'}}) }}#}
+{#            </div>#}
+{#    {% for flashMessage in app.flashes('success') %}#}
+{#        <div class="alert alert-success">{{ flashMessage }}</div>#}
+{#    {% endfor %}#}
+{#    {% for flashMessage in app.flashes('error') %}#}
+{#        <div class="alert alert-danger">{{ flashMessage }}</div>#}
+{#    {% endfor %}#}
+
+{#    <div class="modal-actions">#}
+{#        <button type="submit" class="btn btn-danger mt-3" name="confirm" id="yes" value="true" onclick="showConfirmation(true)">Usuń</button>#}
+{#    </div>#}
+{#    <a class="undo btn btn-primary mt-3 mb-3" href="{{ path('app_my_profile') }}">Wróć</a>#}
+{#        </div>#}
+{#    {{ form_end(deleteData) }}#}
+{#</div>#}
+
+
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card login-form">
+            <div class="card-header title-login-form">
+                <h5>Usuwanie konta</h5>
+            </div>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_start(deleteData, {'attr': {'class': 'd-flex flex-column mb-4'}}) }}
+                    <div class="form-group mt-2">
+                        {{ form_label(deleteData.password) }}
+                        {{ form_widget(deleteData.password, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group mt-2">
+                        {{ form_label(deleteData.passwordConfirm) }}
+                        {{ form_widget(deleteData.passwordConfirm, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    {% for flashMessage in app.flashes('success') %}
+                        <div class="alert alert-success">{{ flashMessage }}</div>
+                    {% endfor %}
+                    {% for flashMessage in app.flashes('error') %}
+                        <div class="alert alert-danger">{{ flashMessage }}</div>
+                    {% endfor %}
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-danger mt-3" name="confirm" id="yes" value="true" onclick="showConfirmation(true)">Usuń</button>
+                    </div>
+                    <a class="undo btn btn-primary mt-3 mb-3" href="{{ path('app_my_profile', {'page': 1}) }}">Wróć</a>
+            {{ form_end(deleteData) }}
+                </div>
+    </div>
+
+    <script>
+        function showConfirmation(confirm) {
+            if (confirm) {
+                alert("Twoje konto zostanie usunięte");
+            }
+        }
+    </script>
+
+{% endblock %}

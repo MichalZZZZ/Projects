@@ -1,0 +1,107 @@
+[
+	{
+		"id": 2,
+		"username": "okulista",
+		"email": "okulista_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$n0Yg4kdSbc0IWTIp$ce701f66dca6fe9c8b89e128a97ebb9a2a4a006eb5ae84a2633949a4a89aa61d",
+		"role": "doctor"
+	},
+	{
+		"id": 3,
+		"username": "pulmonolog",
+		"email": "pulmonolog_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$TY92flPJUiUgeA2F$272972275e81769e01e17c6a2214b3e9f11649b486889a10a756e9af38cef4b3",
+		"role": "doctor"
+	},
+	{
+		"id": 4,
+		"username": "gastrolog",
+		"email": "gastrolog_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$m9ofDQtQxfTEYBLR$8838a381c90d19c2de76e9c511fc27594f94c8a5cb60f5cd6d35cc04cf3d47cc",
+		"role": "doctor"
+	},
+	{
+		"id": 5,
+		"username": "internista",
+		"email": "internista_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$N6gnZpXudFXnYr2x$e28e183f5160ceca746707cc873e04a3c3f384171b1b0fc5b03dff1bf38af7d3",
+		"role": "doctor"
+	},
+	{
+		"id": 6,
+		"username": "internista2",
+		"email": "internista2_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$0EUb031UgTWo91un$2623db990e9ce34b3f98be99e316c4967738c909e83738432c402e5fb35bc72b",
+		"role": "doctor"
+	},
+	{
+		"id": 7,
+		"username": "testing",
+		"email": "testing@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	},
+	{
+		"id": 8,
+		"username": "testing2",
+		"email": "testing2@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	},
+	{
+		"id": 9,
+		"username": "testing3",
+		"email": "testing3@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	},
+	{
+		"id": 10,
+		"username": "okulista2",
+		"email": "okulista2_przychodnia@wp.pl",
+		"password": "pbkdf2:sha256:260000$n0Yg4kdSbc0IWTIp$ce701f66dca6fe9c8b89e128a97ebb9a2a4a006eb5ae84a2633949a4a89aa61d",
+		"role": "doctor"
+	},
+	{
+		"id": 11,
+		"username": "recepcja",
+		"email": "recepcja@gmail.com",
+		"password": "scrypt:32768:8:1$oxVSPmZI5MGGnRyp$a64aa5e693d0a9276efd89b5bc061b62daa0d372a5dc3b539991d8c44edd8fbd7ee80c2cd671246c969473e4e821c87862d3482aef7ff0d081c9b9d1a601dae1",
+		"role": "receptionist"
+	},
+	{
+		"id": 12,
+		"username": "recepcja2",
+		"email": "recepcja2@gmail.com",
+		"password": "scrypt:32768:8:1$ooNk6y6dLi7u6iiY$627581fac8e3b04c9dfc1339985ebf7fe10b2e18ab5fb93588dd788fbbdfcb868f3933bf46f6582c016eac0f77678c2534b5f05b98ecf5fecdf440f00cbeb974",
+		"role": "receptionist"
+	},
+	{
+		"id": 13,
+		"username": "recepcja3",
+		"email": "recepcja3@gmail.com",
+		"password": "scrypt:32768:8:1$aapMfP76jyYJFtbG$1c17a72d5df4f7690f45d3e64ebef758f862b60aa32d5ce37ad8a0ebdb529c64a8c1d807501b3233a4d1f5d3f55b6a1efc1d1b36d45c514a8115a0f5c58839a7",
+		"role": "receptionist"
+	},
+	{
+		"id": 14,
+		"username": "testing4",
+		"email": "testing4@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	},
+	{
+		"id": 15,
+		"username": "testx",
+		"email": "testx@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	},
+	{
+		"id": 16,
+		"username": "novisit",
+		"email": "novisit@gmail.com",
+		"password": "scrypt:32768:8:1$hA5ifTmoXpEBOqkV$53c5f91637e49775dad2f73ecfd10fc7d60f55a1f06e9b8bcacd5db661b20ca8c2cc436bcef0d168f53a8d0d075493813c2280ef5c23c544b6396b41ae0ce445",
+		"role": "patient"
+	}
+]

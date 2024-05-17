@@ -1,0 +1,47 @@
+[
+	{
+		"name": "Marian",
+		"last_name": "Kowalski",
+		"seniority": "5 lat",
+		"specialty_id": 1,
+		"description": "Jestem doswiadczonym i empatycznym lekarzem, ktory zawsze stara sie w pelni zrozumiec problemy swoich pacjentow i udzielic im jak najlepszej pomocy. Zajmuje sie chorobami oczu i specjalizuje sie w leczeniu chorob siatkowki.",
+		"photo": "assets/images/doctor1.png",
+		"user_id": 1
+	},
+	{
+		"name": "Anna",
+		"last_name": "Polak",
+		"seniority": "10 lat",
+		"specialty_id": 3,
+		"description": "Jestem specjalistka od chorob pluc i oddechowych. Jestem bardzo zaangazowana w prace i zawsze staram się znalezc najlepsze rozwizania dla swoich pacjentow. Jestem znana ze swojego profesjonalizmu oraz z tego, ze potrafie wytlumaczyc nawet skomplikowane zagadnienia w sposob zrozumialy dla pacjentow.",
+		"photo": "assets/images/doctor2.png",
+		"user_id": 2
+	},
+	{
+		"name": "Wojciech",
+		"last_name": "Szczesny",
+		"seniority": "8 lat",
+		"specialty_id": 4,
+		"description": "Jestem lekarzem gastrologiem, ktory zawsze stara sie zrozumiec przyczyny problemow swoich pacjentow, a nie tylko leczyc ich objawy. Jestem znany z tego, ze zawsze stawiam na pierwszym miejscu dobro pacjenta i potrafie znalezc najlepsze dla niego rozwiazania.",
+		"photo": "assets/images/doctor3.png",
+		"user_id": 3
+	},
+	{
+		"name": "Tomasz",
+		"last_name": "Nowak",
+		"seniority": "4 lata",
+		"specialty_id": 2,
+		"description": "Jestem lekarzem, ktory cieszy sie duzym zaufaniem wsrod swoich pacjentow. Jestem znany z bardzo dokladnych i skrupulatnych badan oraz z tego, ze zawsze poswiecam duzo czasu na wysluchanie pacjentow i odpowiedzenie na wszystkie ich pytania. Zajmuje sie chorobami wewnetrznymi.",
+		"photo": "assets/images/doctor4.png",
+		"user_id": 4
+	},
+	{
+		"name": "Piotr",
+		"last_name": "Kraszewski",
+		"seniority": "9 lat",
+		"specialty_id": 2,
+		"description": "Jestem bardzo cierpliwym i zyczliwym lekarzem, potrafie słuchac swoich pacjentow i zawsze staram się wyjasnic im ich problemy w sposob zrozumialy. Mam bardzo dobre podejscie do pacjentow i potrafie zbudowac z nimi zaufanie, dzieki czemu pacjenci chetnie do mnie wracaja.",
+		"photo": "assets/images/doctor5.png",
+		"user_id": 5
+	}
+]

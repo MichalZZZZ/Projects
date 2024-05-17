@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PaymentsMethodController!{% endblock %}
+
+{% block content %}
+    <section class="payments-method">
+        <div class="container">
+            <div class="payments-title">
+                <h3>Wybierz metode płatności</h3>
+                <h5>Razem do zapłaty: {{ totalValue }} zł</h5>
+            </div>
+            <div class="all-methods">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="method method-one" id="method-one">
+                            <img src="{{ asset('assets/image/mastercard.png') }}">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="method method-three" id="method-two">
+                            <img src="{{ asset('assets/image/blik.png') }}">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="method method-eleven" id="method-three">
+                            <img src="{{ asset('assets/image/przelewy24.png') }}">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div id="next-button-container"></div>
+        </div>
+    </section>
+
+    <script>
+        const paymentCards = document.querySelectorAll('.method');
+        const nextButtonContainer = document.querySelector('#next-button-container');
+        const button = document.querySelector('.next-button');
+        let selectedMethodId = null; // Identyfikator aktualnie zaznaczonej metody płatności
+
+        Array.from(paymentCards).forEach(card => {
+            card.addEventListener('click', () => {
+                // Sprawdź, czy karta jest już zaznaczona
+                const isSelected = card.classList.contains('card-selected');
+                selectedMethodId = card.getAttribute('id');
+                // Usuń klasę 'card-selected' ze wszystkich kart płatniczych
+                Array.from(paymentCards).forEach(card => {
+                    card.classList.remove('card-selected');
+                });
+
+                // Dodaj klasę 'card-selected' tylko jeśli karta nie była wcześniej zaznaczona
+                if (!isSelected) {
+                    card.classList.add('card-selected');
+                    addNextButton();
+                } else {
+                    removeNextButton();
+                }
+            });
+        });
+
+        // Funkcja do dodawania przycisku "Dalej"
+        function addNextButton() {
+            // Sprawdź, czy przycisk "Dalej" już istnieje
+            if (!document.getElementById('next-button')) {
+                const nextButton = document.createElement('button');
+                nextButton.id = 'next-button';
+                nextButton.classList.add('next-button');
+                nextButton.textContent = 'Dalej';
+
+                // Dodaj obsługę zdarzenia kliknięcia przycisku "Dalej"
+                nextButton.addEventListener('click', () => {
+                    // Przekieruj użytkownika do odpowiedniego widoku na podstawie selectedMethodId
+                    if (selectedMethodId === 'method-one')
+                    {
+                        window.location.href = '{{ path('app_card') }}'; // Zamiast 'app_mastercard' podaj ścieżkę do odpowiedniego widoku dla Mastercard.
+                    }
+                    else if (selectedMethodId === 'method-two')
+                    {
+                        window.location.href = '{{ path('app_blik') }}'; // Zamiast 'app_visa' podaj ścieżkę do odpowiedniego widoku dla Visa.
+                    }
+                    {#else if (selectedMethodId === 'method-three') #}
+                    {#{#}
+                    {#    window.location.href = '{{ path('app_blik') }}'; // Zamiast 'app_blik' podaj ścieżkę do odpowiedniego widoku dla BLIK.#}
+                    {#} #}
+                    {#else if (selectedMethodId === 'method-four') #}
+                    {#{#}
+                    {#    window.location.href = '{{ path('app_payu') }}'; // Zamiast 'app_payu' podaj ścieżkę do odpowiedniego widoku dla PayU.#}
+                    {#}#}
+                });
+
+                nextButtonContainer.appendChild(nextButton);
+            }
+        }
+
+        // Funkcja do usuwania przycisku "Dalej"
+        function removeNextButton() {
+            const nextButton = document.getElementById('next-button');
+            if (nextButton) {
+                nextButtonContainer.removeChild(nextButton);
+            }
+        }
+    </script>
+{% endblock %}
