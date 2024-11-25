@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowAllHiddenController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class="container">
+    <h1 class="mb-4">List of Hidden Bugs</h1>
+        {% for bug in bugsHidden %}
+            <p><strong>ID:</strong> {{ bug.id }}</p>
+            <p><strong>Priority:</strong> {{ bug.priority }}</p>
+            <p><strong>Assignee:</strong> {{ bug.assignee }}</p>
+            <hr>
+        {% endfor %}
+
+        <a href="{{ path('app_show_bugs') }}" class="btn btn-secondary mt-4">Back to Bug List</a>
+    </div>
+
+{% endblock %}

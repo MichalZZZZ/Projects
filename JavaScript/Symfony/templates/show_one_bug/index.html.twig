@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bug Details{% endblock %}
+
+{% block body %}
+
+{% for label, messages in app.flashes %}
+    <div class="myalert alert-{{ label }}">
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    </div>
+{% endfor %}
+
+<a href="{{ path('app_show_bugs') }}" class="back-all-bugs mt-2 mb-3"><i class="fa-solid fa-chevron-left"></i> Back to Bug List</a>
+<div class="container mt-5">
+    <div class="header-details">
+        <h2 class="mb-4">Bug Details</h2>
+        {% if bug.status != 'Done' %}
+            <a href="{{ path('app_bug_fixed', { id: bug.id }) }}" class="btn btn-secondary mb-4">Done <i class="fa-solid fa-check"></i></a>
+        {% endif %}
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ bug.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{ bug.description }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Status</th>
+                <td>{{ bug.status }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Assignee</th>
+                <td>{{ bug.assignee }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Priority</th>
+                <td>{{ bug.priority }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Timestamp</th>
+                <td>{{ bug.timestamp|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th scope="row">URL</th>
+                <td>{{ bug.url }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Selector</th>
+                <td>{{ bug.selector }}</td>
+            </tr>
+            <tr>
+                <th scope="row">User Agent</th>
+                <td>{{ bug.userAgent }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Platform</th>
+                <td>{{ bug.platform }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Screen Resolution</th>
+                <td>{{ bug.screenResolution }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Window Size</th>
+                <td>{{ bug.windowSize }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Attachment</th>
+                <td>
+                    {% if bug.types == 'screenshot' %}
+                        <img src="{{ bug.attachment }}" alt="Attachment" class="enlarge-img" style="max-width: 300px; height: auto;" onclick="openModal(this)">
+                    {% elseif bug.types == 'video' %}
+                        <video src="{{ bug.attachment }}" controls class="img-fluid rounded" style="max-width: 300px; height: auto;"></video>
+                    {% else %}
+                        No attachment
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <span class="close-div" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openModal(element) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImage");
+
+            modal.style.display = "block";
+            // Set the modal image source to the clicked image
+            modalImg.src = element.src;
+
+            // Set the image dimensions to its natural size
+            modalImg.style.width = element.naturalWidth + 'px';
+            modalImg.style.height = element.naturalHeight + 'px';
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+
+    
+</div>
+{% endblock %}
